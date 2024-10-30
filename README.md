@@ -1,1 +1,1 @@
-# Git-made-easy
+Does add,push and commit automatically
