@@ -1,11 +1,19 @@
 # Add git login
 #!/usr/bin/env bash
+file='config.txt'
 
-echo "Enter github username"
-read username
-echo "Enter github token"  # Remember to give read org permission to your token
-read -s token
+
+token=""
+
+# Read each line from the file
+while IFS= read -r line; do  
+    token="$line"  # Store the current line in token
+done < "$file"
+
+
 echo "$token" | gh auth login --with-token
+
+
 
 
 
