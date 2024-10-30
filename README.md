@@ -1,2 +1,2 @@
-Does add,push and commit automatically
+Performs add,push and commit automatically
 Author - Raghav Kadambi
