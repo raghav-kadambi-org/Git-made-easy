@@ -2,19 +2,22 @@
 #!/usr/bin/env bash
 file='config.txt'
 
-
+username=""
 token=""
+i=1  
 
-# Read each line from the file
 while IFS= read -r line; do  
-    token="$line"  # Store the current line in token
+    # Reading each line
+    if [ "$i" -eq 1 ]; then
+        username="$line"
+    elif [ "$i" -eq 2 ]; then
+        token="$line"
+    fi
+    i=$((i + 1))  
 done < "$file"
-
-
-echo "$token" | gh auth login --with-token
-
-
-
+echo "$username"
+echo"$token"
+#echo "$token" | gh auth login --with-token
 
 
 # Add all the files
