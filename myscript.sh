@@ -1,20 +1,9 @@
 #!/usr/bin/env bash
 
-# Configuration file containing username and token
-file='config.txt'
-username=""
-token=""
-i=1
-
-# Read the username and token from the config file
-while IFS= read -r line; do
-    if [ "$i" -eq 1 ]; then
-        username="$line"
-    elif [ "$i" -eq 2 ]; then
-        token="$line"
-    fi
-    i=$((i + 1))
-done < "$file"
+# Read username and token from the config file
+readarray -t config < config.txt
+username="${config[0]}"
+token="${config[2]}"
 
 # Authenticate with GitHub using the token and HTTPS
 echo "Logging in to GitHub as $username..."
