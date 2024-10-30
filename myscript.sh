@@ -7,7 +7,9 @@ read  message
 git commit -m"$message"
 
 # Push the commit files
+echo "Enter the branch you want to push: "
+read branch
 
-git push origin main
+git push $branch
 
 
