@@ -4,7 +4,7 @@ git add .
 #!/usr/bin/env bash
 echo "Enter the commit message: "
 read  message
-git commit -m"message"
+git commit -mmessage
 
 # Push the commit files
 
