@@ -1,37 +1,34 @@
-# Add git login
 #!/usr/bin/env bash
-file='config.txt'
 
+# Configuration file containing username and token
+file='config.txt'
 username=""
 token=""
-i=1  
+i=1
 
-while IFS= read -r line; do  
-    # Reading each line
+# Read the username and token from the config file
+while IFS= read -r line; do
     if [ "$i" -eq 1 ]; then
         username="$line"
     elif [ "$i" -eq 2 ]; then
         token="$line"
     fi
-    i=$((i + 1))  
+    i=$((i + 1))
 done < "$file"
-echo "$username"
-echo "$token"
-#echo "$token" | gh auth login --with-token
 
+# Authenticate with GitHub using the token and HTTPS
+echo "Logging in to GitHub as $username..."
+echo "$token" | gh auth login --with-token --hostname github.com --git-protocol https
 
-# Add all the files
+# Add all the files to staging
 git add .
-# Commit all the files
 
+# Commit all the files with a message
 echo "Enter the commit message: "
-read  message
-git commit -m"$message"
+read -r message
+git commit -m "$message"
 
-# Push the commit files
+# Push the commit to the specified branch
 echo "Enter the branch you want to push: "
-read branch
-
-git push $branch
-
-
+read -r branch
+git push origin "$branch"
