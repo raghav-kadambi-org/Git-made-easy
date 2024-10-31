@@ -1,2 +1,2 @@
-Performs add,push and commit automatically after logging you in
-Author - Raghav Kadambi
+Performs add,push and commit with auto login
+Author - Raghav Kadambi 
